@@ -1,0 +1,28 @@
+#ifndef _HANDLES_H
+#define _HANDLES_H
+
+#include <Windows.h>
+
+typedef struct _LOCAL_PIPE_HANDLES
+{
+	HANDLE hInputReadPipe;
+	HANDLE hInputWritePipe;
+	HANDLE hOutputReadPipe;
+	HANDLE hOutputWritePipe;
+} LOCAL_PIPE_HANDLES, * PLOCAL_PIPE_HANDLES;
+
+typedef struct _REMOTE_PIPE_HANDLES
+{
+	HANDLE hInputPipe;
+	HANDLE hOutputPipe;
+} REMOTE_PIPE_HANDLES, *PREMOTE_PIPE_HANDLES;
+
+typedef struct _INTERPROCESS_PIPE_HANDLES
+{
+	LOCAL_PIPE_HANDLES Local;
+	REMOTE_PIPE_HANDLES Remote;
+} INTERPROCESS_PIPE_HANDLES, *PINTERPROCESS_PIPE_HANDLES;
+
+PINTERPROCESS_PIPE_HANDLES GetInterprocessPipeHandles(HANDLE hRemoteProcess);
+
+#endif // _HANDLES_H

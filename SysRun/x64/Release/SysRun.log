@@ -1,0 +1,198 @@
+﻿  RemoteThreadRout.c
+D:\Shared\SysRun\SysRun\Tokens.h(16,2): error C2061: błąd składniowy: identyfikator „LPOPEN_PROCESS_TOKEN”
+D:\Shared\SysRun\SysRun\Tokens.h(17,28): error C2061: błąd składniowy: identyfikator „AdjustTokenPrivileges”
+D:\Shared\SysRun\SysRun\Tokens.h(17,28): error C2059: błąd składniowy: „;”
+D:\Shared\SysRun\SysRun\Tokens.h(19,1): error C2059: błąd składniowy: „}”
+D:\Shared\SysRun\SysRun\RemoteThreadRout.h(354,2): error C2061: błąd składniowy: identyfikator „TOKEN_THREAD_DATA”
+D:\Shared\SysRun\SysRun\RemoteThreadRout.h(361,1): error C2059: błąd składniowy: „}”
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(9,20): error C2065: "REMOTE_THREAD_DATA": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(9,25): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(9,20): warning C4552: „*”: Wynik wyrażenia nie jest używany
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(27,6): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(27,27): error C2065: "REMOTE_THREAD_DATA": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(27,28): error C2059: błąd składniowy: „)”
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(41,29): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(41,31): error C2223: po lewej "->GetCurrentProcess" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(42,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(42,13): error C2223: po lewej "->ttd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(45,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(45,13): error C2223: po lewej "->ttd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(45,66): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(45,68): error C2223: po lewej "->ttd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(49,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(49,13): error C2223: po lewej "->CreatePipe" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(52,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(52,13): error C2223: po lewej "->CreatePipe" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(55,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(55,13): error C2223: po lewej "->SetHandleInformation" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(58,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(58,13): error C2223: po lewej "->SetHandleInformation" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(62,18): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(62,20): error C2223: po lewej "->LoadLibraryW" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(62,36): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(62,38): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(66,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(66,7): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(66,27): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(66,29): error C2223: po lewej "->GetProcAddress" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(66,59): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(66,61): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(67,9): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(67,11): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(70,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(70,7): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(70,27): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(70,29): error C2223: po lewej "->GetProcAddress" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(70,59): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(70,61): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(71,9): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(71,11): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(74,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(74,7): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(74,27): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(74,29): error C2223: po lewej "->GetProcAddress" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(74,59): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(74,61): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(75,9): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(75,11): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(78,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(78,7): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(78,23): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(78,25): error C2223: po lewej "->GetProcAddress" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(78,55): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(78,57): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(79,9): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(79,11): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(82,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(82,7): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(84,13): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(84,15): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(88,34): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(88,36): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(90,27): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(90,29): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(92,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(92,13): error C2223: po lewej "->ctd" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(96,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(96,7): error C2223: po lewej "->lpHandles" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(97,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(97,7): error C2223: po lewej "->lpHandles" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(98,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(98,7): error C2223: po lewej "->lpHandles" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(99,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(99,7): error C2223: po lewej "->lpHandles" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(106,20): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(106,22): error C2223: po lewej "->CreateThread" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(106,71): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(106,73): error C2223: po lewej "->RemoteInputThread" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(109,21): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(109,23): error C2223: po lewej "->CreateThread" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(109,72): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(109,74): error C2223: po lewej "->RemoteOutputThread" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(113,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(113,7): error C2223: po lewej "->hInputThread" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(114,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(114,7): error C2223: po lewej "->hOutputThread" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(116,11): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(116,13): error C2223: po lewej "->CreateProcessW" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(118,6): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(118,8): error C2223: po lewej "->lpCommandLine" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(132,5): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(132,7): error C2223: po lewej "->SetEvent" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(132,19): error C2065: "rtd": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(132,21): error C2223: po lewej "->hEventSuccess" musi wskazywać na struct/union
+D:\Shared\SysRun\SysRun\RemoteThreadRout.c(132,21): fatal error C1003: Licznik błędów przekracza 100; zatrzymywanie kompilacji
+  SysRunThread.c
+D:\Shared\SysRun\SysRun\Tokens.h(16,2): error C2061: błąd składniowy: identyfikator „LPOPEN_PROCESS_TOKEN”
+D:\Shared\SysRun\SysRun\Tokens.h(17,28): error C2061: błąd składniowy: identyfikator „AdjustTokenPrivileges”
+D:\Shared\SysRun\SysRun\Tokens.h(17,28): error C2059: błąd składniowy: „;”
+D:\Shared\SysRun\SysRun\Tokens.h(19,1): error C2059: błąd składniowy: „}”
+D:\Shared\SysRun\SysRun\RemoteThreadRout.h(354,2): error C2061: błąd składniowy: identyfikator „TOKEN_THREAD_DATA”
+D:\Shared\SysRun\SysRun\RemoteThreadRout.h(361,1): error C2059: błąd składniowy: „}”
+D:\Shared\SysRun\SysRun\SysRunThread.c(30,21): error C2065: "REMOTE_THREAD_DATA": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(30,21): error C2146: błąd składniowy: brakuje „;” przed identyfikatorem „threadData”
+D:\Shared\SysRun\SysRun\SysRunThread.c(30,31): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(54,17): warning C4013: niezdefiniowany "atoi"; przy założeniu, że extern zwraca int
+D:\Shared\SysRun\SysRun\SysRunThread.c(159,9): warning C4477: „printf”: ciąg formatu „%u” wymaga argumentu typu „unsigned int”, ale argument 3 ze zmienną liczbą argumentów ma typ „SIZE_T”
+D:\Shared\SysRun\SysRun\SysRunThread.c(159,9): message : rozważ użycie elementu „%llu” w ciągu formatu
+D:\Shared\SysRun\SysRun\SysRunThread.c(159,9): message : rozważ użycie elementu „%Iu” w ciągu formatu
+D:\Shared\SysRun\SysRun\SysRunThread.c(159,9): message : rozważ użycie elementu „%I64u” w ciągu formatu
+D:\Shared\SysRun\SysRun\SysRunThread.c(198,2): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(200,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(200,13): error C2224: po lewej ".LoadLibraryW" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(201,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(201,13): error C2224: po lewej ".GetProcAddress" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(202,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(202,13): error C2224: po lewej ".CreateProcessW" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(203,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(203,13): error C2224: po lewej ".CreateThread" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(204,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(204,13): error C2224: po lewej ".CreatePipe" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(205,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(205,13): error C2224: po lewej ".SetHandleInformation" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(206,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(206,13): error C2224: po lewej ".DuplicateHandle" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(207,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(207,13): error C2224: po lewej ".CloseHandle" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(208,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(208,13): error C2224: po lewej ".WriteProcessMemory" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(209,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(209,13): error C2224: po lewej ".GetCurrentProcess" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(210,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(210,13): error C2224: po lewej ".WriteFile" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(211,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(211,13): error C2224: po lewej ".ReadFile" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(212,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(212,13): error C2224: po lewej ".CancelSynchronousIo" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(213,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(213,13): error C2224: po lewej ".Sleep" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(214,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(214,13): error C2224: po lewej ".SetEvent" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(215,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(215,13): error C2224: po lewej ".WaitForSingleObject" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(216,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(216,13): error C2224: po lewej ".GetLastError" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(217,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(217,13): error C2224: po lewej ".TeminateThread" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(218,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(218,13): error C2224: po lewej ".ExitThread" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(220,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(220,13): error C2224: po lewej ".lpCommandLine" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(221,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(221,13): error C2224: po lewej ".hEventSuccess" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(222,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(222,13): error C2224: po lewej ".hEventFail" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(223,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(223,13): error C2224: po lewej ".RemoteInputThread" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(224,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(224,13): error C2224: po lewej ".RemoteOutputThread" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(226,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(226,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(227,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(227,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(228,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(228,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(229,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(229,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(230,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(230,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(231,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(231,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(232,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(232,13): error C2224: po lewej ".ctd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(234,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(234,13): error C2224: po lewej ".ttd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(235,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(235,13): error C2224: po lewej ".ttd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(236,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(236,13): error C2224: po lewej ".ttd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(237,12): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(237,13): error C2224: po lewej ".ttd" musi być typ struct/union
+D:\Shared\SysRun\SysRun\SysRunThread.c(239,81): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(239,100): error C2065: "threadData": niezadeklarowany identyfikator
+D:\Shared\SysRun\SysRun\SysRunThread.c(240,159): error C2065: "threadData": niezadeklarowany identyfikator
+  Tokens.c
+D:\Shared\SysRun\SysRun\Tokens.h(16,2): error C2061: błąd składniowy: identyfikator „LPOPEN_PROCESS_TOKEN”
+D:\Shared\SysRun\SysRun\Tokens.h(17,28): error C2061: błąd składniowy: identyfikator „AdjustTokenPrivileges”
+D:\Shared\SysRun\SysRun\Tokens.h(17,28): error C2059: błąd składniowy: „;”
+D:\Shared\SysRun\SysRun\Tokens.h(19,1): error C2059: błąd składniowy: „}”
