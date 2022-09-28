@@ -20,6 +20,21 @@ typedef BOOL(WINAPI* PCREATE_PROCESS_W)(
 	);
 typedef PCREATE_PROCESS_W LPCREATE_PROCESS_W;
 
+typedef BOOL(WINAPI* PCREATE_PROCESS_AS_USER_W)(
+	_In_opt_ HANDLE hToken,
+	_In_opt_ LPCWSTR lpApplicationName,
+	_Inout_opt_ LPWSTR lpCommandLine,
+	_In_opt_ LPSECURITY_ATTRIBUTES lpProcessAttributes,
+	_In_opt_ LPSECURITY_ATTRIBUTES lpThreadAttributes,
+	_In_ BOOL bInheritHandles,
+	_In_ DWORD dwCreationFlags,
+	_In_opt_ LPVOID lpEnvironment,
+	_In_opt_ LPCWSTR lpCurrentDirectory,
+	_In_ LPSTARTUPINFOW lpStartupInfo,
+	_Out_ LPPROCESS_INFORMATION lpProcessInformation
+	);
+typedef PCREATE_PROCESS_AS_USER_W LPCREATE_PROCESS_AS_USER_W;
+
 typedef HANDLE(*PCREATE_THREAD)(
 	_In_opt_ LPSECURITY_ATTRIBUTES lpThreadAttributes,
 	_In_ SIZE_T dwStackSize,
@@ -296,23 +311,6 @@ typedef void(*PSLEEP)(
 	);
 typedef PSLEEP LPSLEEP;
 
-typedef BOOL(*POPEN_PROCESS_TOKEN)(
-	_In_ HANDLE ProcessHandle,
-	_In_ DWORD DesiredAccess,
-	_Out_ PHANDLE TokenHandle
-	);
-typedef POPEN_PROCESS_TOKEN LPOPEN_PROCESS_TOKEN;
-
-typedef BOOL(*PADJUST_TOKEN_PRIVILEGES)(
-	_In_ HANDLE TokenHandle,
-	_In_ BOOL DisableAllPrivileges,
-	_In_opt_ PTOKEN_PRIVILEGES NewState,
-	_In_ DWORD BufferLength,
-	_Out_opt_ PTOKEN_PRIVILEGES PreviousState,
-	_Out_opt_ PDWORD ReturnLength
-	);
-typedef PADJUST_TOKEN_PRIVILEGES LPADJUST_TOKEN_PRIVILEGES;
-
 typedef struct _REMOTE_THREAD_DATA
 {
 	// used to call inside remote thread
@@ -321,6 +319,7 @@ typedef struct _REMOTE_THREAD_DATA
 	LPTHREAD_START_ROUTINE RemoteInputThread;
 	LPTHREAD_START_ROUTINE RemoteOutputThread;
 	LPCREATE_PROCESS_W CreateProcessW;
+	LPCREATE_PROCESS_AS_USER_W CreateProcessAsUserW;
 	LPCREATE_THREAD CreateThread;
 	LPTERMINATE_THREAD TeminateThread;
 	LPDUPLICATE_HANDLE DuplicateHandle;
@@ -343,6 +342,7 @@ typedef struct _REMOTE_THREAD_DATA
 	LPEXIT_THREAD ExitThread;
 	LPSLEEP Sleep;
 	LPWSTR lpCommandLine;
+	LPWSTR lpCreateProcessAsUserW;
 	// used to signal execution success
 	HANDLE hEventSuccess;
 	HANDLE hEventFail;

